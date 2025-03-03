@@ -16,7 +16,7 @@ export function CareHubHeader() {
       </div>
       <div className="flex items-center space-x-4">
         <div className="hidden md:block text-sm font-medium text-slate-700">
-          Welcome, Sunrise Care Home
+          Welcome, Care Hub Admin
         </div>
         <button className="text-slate-500 hover:text-slate-700 transition-colors relative">
           <Bell className="h-5 w-5" />

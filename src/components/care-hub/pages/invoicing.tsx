@@ -11,7 +11,7 @@ import { CreditCard, Download, Eye } from "lucide-react";
 interface Invoice {
   id: string;
   invoiceNumber: string;
-  title: string;
+  agency: string;
   amount: string;
   date: string;
   dueDate: string;
@@ -23,7 +23,7 @@ export function Invoicing() {
     {
       id: "invoice-1",
       invoiceNumber: "INV-12345",
-      title: "Monthly Staffing Services - April",
+      agency: "Care Staffing Solutions",
       amount: "£2,450.00",
       date: "01 Apr 2024",
       dueDate: "15 Apr 2024",
@@ -32,7 +32,7 @@ export function Invoicing() {
     {
       id: "invoice-2",
       invoiceNumber: "INV-12346",
-      title: "Specialized Care Services - Week 14",
+      agency: "Healthcare Professionals",
       amount: "£1,875.50",
       date: "02 Apr 2024",
       dueDate: "16 Apr 2024",
@@ -41,7 +41,7 @@ export function Invoicing() {
     {
       id: "invoice-3",
       invoiceNumber: "INV-12347",
-      title: "Emergency Staffing Coverage - April",
+      agency: "Nursing Staff Direct",
       amount: "£3,120.75",
       date: "03 Apr 2024",
       dueDate: "17 Apr 2024",
@@ -50,7 +50,7 @@ export function Invoicing() {
     {
       id: "invoice-4",
       invoiceNumber: "INV-12340",
-      title: "Monthly Staffing Services - March",
+      agency: "Care Staffing Solutions",
       amount: "£2,150.00",
       date: "15 Mar 2024",
       dueDate: "29 Mar 2024",
@@ -59,7 +59,7 @@ export function Invoicing() {
     {
       id: "invoice-5",
       invoiceNumber: "INV-12341",
-      title: "Specialized Care Services - Week 12",
+      agency: "Healthcare Professionals",
       amount: "£1,950.25",
       date: "18 Mar 2024",
       dueDate: "01 Apr 2024",
@@ -68,7 +68,7 @@ export function Invoicing() {
     {
       id: "invoice-6",
       invoiceNumber: "INV-12342",
-      title: "Weekend Shift Coverage - March",
+      agency: "Nursing Staff Direct",
       amount: "£2,875.50",
       date: "10 Mar 2024",
       dueDate: "24 Mar 2024",
@@ -167,7 +167,7 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
       <div className="flex w-full min-w-0 flex-col">
         <div className="flex items-center justify-between gap-2">
           <h3 className="font-medium transition-colors ease-in-out duration-[0.15s] m-0">
-            {invoice.title}
+            {invoice.agency}
           </h3>
           <div className="flex items-center gap-2">
             <div className="text-lg font-semibold text-slate-900">

@@ -12,7 +12,6 @@ interface Report {
   name: string;
   description: string;
   lastGenerated: string;
-  reportId: string;
   category: "Performance" | "Financial" | "Compliance" | "Operational";
 }
 
@@ -23,7 +22,6 @@ export function Reports() {
       name: "Shift Coverage Analysis",
       description: "Analysis of shift coverage and staffing levels",
       lastGenerated: "12 Apr 2024",
-      reportId: "RPT-12345",
       category: "Performance",
     },
     {
@@ -31,7 +29,6 @@ export function Reports() {
       name: "Worker Performance",
       description: "Performance metrics for care workers",
       lastGenerated: "10 Apr 2024",
-      reportId: "RPT-12346",
       category: "Performance",
     },
     {
@@ -39,7 +36,6 @@ export function Reports() {
       name: "Financial Summary",
       description: "Summary of financial transactions and costs",
       lastGenerated: "5 Apr 2024",
-      reportId: "RPT-12347",
       category: "Financial",
     },
     {
@@ -47,7 +43,6 @@ export function Reports() {
       name: "Invoice Report",
       description: "Detailed report of all invoices and payments",
       lastGenerated: "1 Apr 2024",
-      reportId: "RPT-12348",
       category: "Financial",
     },
     {
@@ -55,7 +50,6 @@ export function Reports() {
       name: "Compliance Audit",
       description: "Audit of regulatory compliance metrics",
       lastGenerated: "31 Mar 2024",
-      reportId: "RPT-12349",
       category: "Compliance",
     },
     {
@@ -63,7 +57,6 @@ export function Reports() {
       name: "Incident Analysis",
       description: "Analysis of reported incidents and resolutions",
       lastGenerated: "28 Mar 2024",
-      reportId: "RPT-12350",
       category: "Operational",
     },
   ];
@@ -164,8 +157,6 @@ export function Reports() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-sm leading-5 text-neutral-500 mt-1 mb-0">
-                    <span>ID: {report.reportId}</span>
-                    <span>•</span>
                     <span>{report.description}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm leading-5 text-neutral-500 mt-1 mb-0">

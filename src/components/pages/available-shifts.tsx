@@ -5,24 +5,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Calendar,
-  Filter,
-  MapPin,
-  Clock,
-  CreditCard,
-  CheckCircle,
-  X,
-} from "lucide-react";
-import { useState } from "react";
+import { Calendar, Filter } from "lucide-react";
 
 interface Shift {
   id: string;
@@ -40,23 +23,6 @@ interface Shift {
 }
 
 export function AvailableShifts() {
-  const [selectedShift, setSelectedShift] = useState<Shift | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleBookShift = (shift: Shift) => {
-    setSelectedShift(shift);
-    setIsDialogOpen(true);
-  };
-
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-  };
-
-  const handleConfirmBooking = () => {
-    // Here you would implement the actual booking logic
-    alert(`Shift ${selectedShift?.shiftId} booked successfully!`);
-    setIsDialogOpen(false);
-  };
   const shifts: Shift[] = [
     {
       id: "shift-1",
@@ -202,10 +168,7 @@ export function AvailableShifts() {
                     </div>
 
                     <div className="ml-auto self-center">
-                      <button
-                        onClick={() => handleBookShift(shift)}
-                        className="text-sm normal-case bg-blue-500 text-white cursor-pointer inline-flex h-8 items-center justify-center whitespace-nowrap leading-5 font-medium transition-colors ease-in-out duration-[0.15s] hover:bg-blue-600 m-0 px-3 py-0 rounded-md [appearance:button]"
-                      >
+                      <button className="text-sm normal-case bg-blue-500 text-white cursor-pointer inline-flex h-8 items-center justify-center whitespace-nowrap leading-5 font-medium transition-colors ease-in-out duration-[0.15s] hover:bg-blue-600 m-0 px-3 py-0 rounded-md [appearance:button]">
                         Book Shift
                       </button>
                     </div>
@@ -216,96 +179,6 @@ export function AvailableShifts() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Shift Details Dialog */}
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[500px]">
-          <DialogHeader>
-            <DialogTitle>Shift Details</DialogTitle>
-            <DialogDescription>
-              Review the shift details before confirming your booking.
-            </DialogDescription>
-          </DialogHeader>
-
-          {selectedShift && (
-            <div className="py-4">
-              <h3 className="text-lg font-semibold mb-2">
-                {selectedShift.facility}
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-blue-500 mr-2" />
-                  <span className="text-sm font-medium">
-                    {selectedShift.role}
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <Calendar className="h-4 w-4 text-blue-500 mr-2" />
-                  <span className="text-sm">{selectedShift.date}</span>
-                </div>
-                <div className="flex items-center">
-                  <Clock className="h-4 w-4 text-blue-500 mr-2" />
-                  <span className="text-sm">{selectedShift.time}</span>
-                </div>
-                <div className="flex items-center">
-                  <CreditCard className="h-4 w-4 text-blue-500 mr-2" />
-                  <span className="text-sm font-medium">
-                    {selectedShift.rate}
-                  </span>
-                </div>
-                <div className="flex items-start">
-                  <MapPin className="h-4 w-4 text-blue-500 mr-2 mt-0.5" />
-                  <span className="text-sm">{selectedShift.address}</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-sm font-medium mr-2">Shift ID:</span>
-                  <span className="text-sm">{selectedShift.shiftId}</span>
-                </div>
-                <div className="pt-2">
-                  <h4 className="text-sm font-medium mb-2">Requirements:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${selectedShift.uniformRequired ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"}`}
-                    >
-                      Uniform:{" "}
-                      {selectedShift.uniformRequired
-                        ? "Required"
-                        : "Not Required"}
-                    </span>
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${selectedShift.medTrained ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}`}
-                    >
-                      Med Trained
-                    </span>
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${selectedShift.pmva ? "bg-purple-100 text-purple-800" : "bg-gray-100 text-gray-800"}`}
-                    >
-                      PMVA: {selectedShift.pmva ? "Required" : "Not Required"}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <DialogFooter className="flex justify-between sm:justify-between">
-            <button
-              onClick={handleCloseDialog}
-              className="text-sm normal-case bg-slate-100 text-slate-700 cursor-pointer inline-flex h-9 items-center justify-center whitespace-nowrap leading-5 font-medium transition-colors ease-in-out duration-[0.15s] hover:bg-slate-200 m-0 px-4 py-0 rounded-md [appearance:button]"
-            >
-              <X className="h-4 w-4 mr-2" />
-              Cancel
-            </button>
-            <button
-              onClick={handleConfirmBooking}
-              className="text-sm normal-case bg-blue-500 text-white cursor-pointer inline-flex h-9 items-center justify-center whitespace-nowrap leading-5 font-medium transition-colors ease-in-out duration-[0.15s] hover:bg-blue-600 m-0 px-4 py-0 rounded-md [appearance:button]"
-            >
-              <CheckCircle className="h-4 w-4 mr-2" />
-              Book Shift
-            </button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }
